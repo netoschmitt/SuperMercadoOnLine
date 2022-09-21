@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using SuperMercadoNetoOnLine.Data;
+using SuperMercadoNetoOnLine.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +15,22 @@ namespace SuperMercadoNetoOnLine.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        private ApplicationDBContext _context;
+
+        //propriedade produtos acessada pela Model no foreach
+        public IList<Produto> Produtos;
+
+        public IndexModel(ILogger<IndexModel> logger, ApplicationDBContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
+        // metodo retorna uma tarefa/retorna os produtos do db / desmenbrado em 2 , uma thread, e outro.. espera termino desta execução para retornar o conteudo p page
+        public async Task OnGetAsync()
         {
-            
+            Produtos = await _context.Produto.ToListAsync<Produto>();
         }
-
-        public void OnPost()
-        {
-
-        }
+                
     }
 }

@@ -5,10 +5,31 @@
 }
 
 <div class="text-center">
-    <br />
 
-    <h1 class="display-4">BemVindo!</h1>
-    <hr />
-    <h1 class="display-4">Sacolão Online</h1>
+    <h1 class="display-4">Bem-Vindo ao Sacolão Online</h1>
     <p>Este é um catálogo de produtos criado com a geração automática de CRUD baseada em Modelo, presente no Visual Studio 2022.</p>
+</div>
+
+<div class="row">
+    @foreach (var produto in Model.Produtos)
+    {                     // (col-sm-*)multiplo ou divisor de 12
+        <div class="col-sm-3">  
+            <div>
+                <div class="card text-center bg-light mb-4">
+                    <img class="card-img-top" src="/img/produto/@String.Concat(produto.IdProduto.ToString("D6"),".jpg")" alt="Imagem de @produto.Nome">
+                    <div class="card-header">
+                        R$ @produto.Preco.ToString("F2")
+                    </div>
+                    <div class="card-body" style="height:150px;">
+                        <h5 class="card-title">@produto.Nome</h5>
+                        <p class="card-text">@produto.Descricao</p>
+                        <div class="card-footer">
+                            <div><a href="#" class="btn btn-primary">Adicionar ao Carrinho</a></div>
+                            <small class="text-muted">Estoque: @produto.Estoque</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
