@@ -7,7 +7,7 @@ namespace SuperMercadoNetoOnLine.Models
     public class Cliente
     {
         [Key]
-        public int IDCliente { get; set; }
+        public int IdCliente { get; set; }
 
         [Required(ErrorMessage ="o Campo {0} é de preenchimento obrigatório.")]
         [MaxLength(100, ErrorMessage = "O campo {0} deve ter no máximo {1} caracteres.")]
