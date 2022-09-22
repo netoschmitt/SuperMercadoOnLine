@@ -11,7 +11,6 @@ namespace SuperMercadoNetoOnLine.Data
         }
 
         public DbSet<Produto> Produto { get; set; }
-
         public DbSet<Cliente> Clientes { get; set; }
     }
 }

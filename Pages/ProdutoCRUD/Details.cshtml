@@ -5,7 +5,7 @@
     ViewData["Title"] = "Detalhes de Produto";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h2>@ViewData["Title"]</h2>
 
 <div>
     <h4><b>Código</b> @Model.Produto.IdProduto.ToString("D5")</h4>
@@ -38,6 +38,8 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Produto.IdProduto">Alterar</a> |
-    <a asp-page="./Index">Voltar à Lista</a>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Produto.IdProduto" class="btn btn-primary">Alterar</a>
+        <a asp-page="./Index" class="btn btn-secondary ">Voltar à Lista</a>
+    </div>
 </div>

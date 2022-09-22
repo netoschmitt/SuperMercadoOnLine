@@ -33,7 +33,7 @@
                         <td>@Html.DisplayFor(modelItem => item.DataNascimento)</td>
                         <td>@Html.DisplayFor(modelItem => item.Email)</td>
                         <td class="text-center">
-                            <a class="btn btn-primary btn-sm" asp-page="./Alterar" asp-route-id="@item.IdCliente">Alterar</a>
+                            <a class="btn btn-primary btn-sm" asp-page="./Alterar"  asp-route-id="@item.IdCliente">Alterar</a>
                             <form class="d-inline-block" asp-page-handler="delete" asp-route-id="@item.IdCliente" method="post">
                                 <button class="btn btn-danger btn-sm" onclick="confirmarExclusao(this);" type="button">Excluir</button>
                             </form>
