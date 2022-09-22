@@ -37,7 +37,7 @@ namespace SuperMercadoNetoOnLine.Pages.ClienteCRUD
                 _context.Clientes.Remove(cliente);
                 await _context.SaveChangesAsync();
             }
-            return Page();
+            return RedirectToPage("./Listar");
         }
     }
 }
