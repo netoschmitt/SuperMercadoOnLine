@@ -28,8 +28,11 @@ namespace SuperMercadoNetoOnLine
         {
             services.AddRazorPages();
 
-            services.AddDbContext<ApplicationDBContext>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("ApplicationDBContext")));
+            services.AddEntityFrameworkSqlServer()
+                .AddDbContext<ApplicationDBContext>(o => o.UseSqlServer(Configuration.GetConnectionString("Database")));
+
+            //services.AddDbContext<ApplicationDBContext>(options =>
+            //        options.UseSqlite(Configuration.GetConnectionString("ApplicationDBContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

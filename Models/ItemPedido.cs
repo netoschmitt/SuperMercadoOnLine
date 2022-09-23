@@ -8,13 +8,13 @@ namespace SuperMercadoNetoOnLine.Models
         [Required]
         public int IdPedido { get; set; }
         [Required]
-        public int IdProduto  { get; set; }
+        public int IdProduto { get; set; }
 
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
         public float Quantidade { get; set; }            
 
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
-        [Column(TypeName ="decimal(18,2")]
+        [Column(TypeName = "decimal(18,2)")]
         [Display(Name = "Valor Unitário")]
         public decimal ValorUnitario { get; set; }
 
