@@ -59,7 +59,7 @@ namespace SuperMercadoNetoOnLine
             });
             
 
-
+            // configuração de cultura - separador decimal com ',' => libs JS
             var defaultCulture = new CultureInfo("pt-BR");
             var localizationOptions = new RequestLocalizationOptions
             {

@@ -10,6 +10,7 @@ namespace SuperMercadoNetoOnLine.Data
         {
         }
 
+        // PK compostas
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ItemPedido>()
@@ -22,6 +23,7 @@ namespace SuperMercadoNetoOnLine.Data
                 .HasKey(e => new { e.IdCliente, e.IdProduto });
         }
 
+        // coleções de dados
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
