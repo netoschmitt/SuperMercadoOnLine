@@ -12,12 +12,12 @@ namespace SuperMercadoNetoOnLine.Pages.ClienteCRUD
     {
         private readonly ApplicationDBContext _context;
 
-        public IList<Cliente> Clientes { get; set; }
-
         public ListarModel(ApplicationDBContext context)
         {
             _context = context;
         }
+
+        public IList<Cliente> Clientes { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -26,7 +26,7 @@ namespace SuperMercadoNetoOnLine.Pages.ClienteCRUD
 
         public async Task<IActionResult> OnPostDeleteAsync(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
