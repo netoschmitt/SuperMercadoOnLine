@@ -9,7 +9,7 @@ namespace SuperMercadoNetoOnLine.Models
         [Required]
         public int IdCliente { get; set; }
         [Required]
-        public int IDProduto { get; set; }
+        public int IdProduto { get; set; }
         [Required]
         public DateTime DataHora { get; set; }
 

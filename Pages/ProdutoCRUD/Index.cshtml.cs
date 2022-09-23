@@ -23,7 +23,7 @@ namespace SuperMercadoNetoOnLine.Pages.ProdutoCRUD
 
         public async Task OnGetAsync()
         {
-            Produto = await _context.Produto.ToListAsync();
+            Produto = await _context.Produtos.ToListAsync();
         }
     }
 }

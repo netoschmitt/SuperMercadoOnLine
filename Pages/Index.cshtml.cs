@@ -29,7 +29,7 @@ namespace SuperMercadoNetoOnLine.Pages
         // metodo retorna uma tarefa/retorna os produtos do db / desmenbrado em 2 , uma thread, e outro.. espera termino desta execução para retornar o conteudo p page
         public async Task OnGetAsync()
         {
-            Produtos = await _context.Produto.ToListAsync<Produto>();
+            Produtos = await _context.Produtos.ToListAsync<Produto>();
         }
                 
     }

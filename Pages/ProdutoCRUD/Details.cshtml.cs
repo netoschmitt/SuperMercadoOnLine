@@ -28,7 +28,7 @@ namespace SuperMercadoNetoOnLine.Pages.ProdutoCRUD
                 return NotFound();
             }
 
-            Produto = await _context.Produto.FirstOrDefaultAsync(m => m.IdProduto == id);
+            Produto = await _context.Produtos.FirstOrDefaultAsync(m => m.IdProduto == id);
 
             if (Produto == null)
             {

@@ -29,7 +29,7 @@ namespace SuperMercadoNetoOnLine.Pages.ProdutoCRUD
                 return NotFound();
             }
 
-            Produto = await _context.Produto.FirstOrDefaultAsync(m => m.IdProduto == id);
+            Produto = await _context.Produtos.FirstOrDefaultAsync(m => m.IdProduto == id);
 
             if (Produto == null)
             {
@@ -45,11 +45,11 @@ namespace SuperMercadoNetoOnLine.Pages.ProdutoCRUD
                 return NotFound();
             }
 
-            Produto = await _context.Produto.FindAsync(id);
+            Produto = await _context.Produtos.FindAsync(id);
 
             if (Produto != null)
             {
-                _context.Produto.Remove(Produto);
+                _context.Produtos.Remove(Produto);
                 await _context.SaveChangesAsync();
             }
 
