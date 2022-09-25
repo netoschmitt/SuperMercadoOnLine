@@ -18,15 +18,15 @@
                 <div class="navbar-collapse collapse" id="#navbarNavAltMarkup">
                     <div class="navbar-nav ">
                         <a class="nav-item nav-link" asp-area="" asp-page="/Admin">Area Administrativa</a>
-                        <a class="nav-item nav-link" asp-area="" asp-page="/ProdutoCRUD">Produtos</a>
-                        <a class="nav-item nav-link" asp-area="" asp-page="/ClienteCRUD">Clientes</a>
+                        <a class="nav-item nav-link" asp-area="" asp-page="/ProdutoCRUD/Listar">Produtos</a>
+                        <a class="nav-item nav-link" asp-area="" asp-page="/ClienteCRUD/Listar">Clientes</a>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
     <section class="container">
-        <main role="main" >
+        <main role="main">
             @RenderBody()
         </main>
     </section>

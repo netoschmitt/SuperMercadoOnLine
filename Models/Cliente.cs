@@ -33,7 +33,7 @@ namespace SuperMercadoNetoOnLine.Models
         [RegularExpression(@"[0-9]{11}$", ErrorMessage = "O campo \"{0}\" deve ser preenchido com 11 digitos numéricos")]
         [MaxLength(11, ErrorMessage = "O campo \"{0}\" deve ter no máximo {1} caracteres.")]
         [MinLength(11, ErrorMessage = "O campo \"{0}\" deve ter no mínimo {1} caracteres.")]
-        [UIHint("_CustomCPF")]
+        [UIHint("_CPFTemplate")]
         public string CPF { get; set; }
 
         [Required(ErrorMessage = "o Campo \"{0}\" é de preenchimento obrigatório.")]
