@@ -26,10 +26,18 @@ namespace SuperMercadoNetoOnLine.Pages
             _context = context;
         }
 
-        // metodo retorna uma tarefa/retorna os produtos do db / desmenbrado em 2 , uma thread, e outro.. espera termino desta execução para retornar o conteudo p page
-        public async Task OnGetAsync()
+        
+        public async Task OnGetAsync([FromQuery]string termoBusca)
         {
-            Produtos = await _context.Produtos.ToListAsync<Produto>();
+            if (string.IsNullOrEmpty(termoBusca))
+            {
+                Produtos = await _context.Produtos.ToListAsync();
+            }
+            else
+            {
+                Produtos = await _context.Produtos.Where(
+                    p => p.Nome.ToUpper().Contains(termoBusca.ToUpper())).ToListAsync(); // predicado da busca
+            }
         }
                 
     }

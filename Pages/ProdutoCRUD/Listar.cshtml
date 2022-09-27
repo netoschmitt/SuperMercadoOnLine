@@ -14,7 +14,7 @@
 
 
 
-@if (Model.Produtos.Count > 0)
+@if (Model.Produto.Count > 0)
 {
     <main class="container">
         <table class="table">
@@ -28,22 +28,21 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Produtos)
+                @foreach (var item in Model.Produto)
                 {
-                    <tr>
+                    <tr class="@(item.Estoque > 0 ? "" : "bg-info")">
                         <td>@Html.DisplayFor(modelItem => item.IdProduto)</td>
                         <td>@Html.DisplayFor(modelItem => item.Nome)</td>
                         <td>@Html.DisplayFor(modelItem => item.Preco)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Estoque)</td>
+                        <td class="d-none d-lg-table-cell">@Html.DisplayFor(modelItem => item.Estoque)</td>
 
                         <td class="text-center">
                             <a class="btn btn-primary btn-sm" asp-page="./Alterar" asp-route-id="@item.IdProduto">Alterar</a>
                             <form class="d-inline-block" asp-page-handler="delete" asp-route-id="@item.IdProduto" method="post">
                                 <button class="btn btn-danger btn-sm" onclick="confirmarExclusao(this);">
-                                    EXcluir
+                                    Excluir
                                 </button>
                             </form>
-
                         </td>
                     </tr>
                 }
