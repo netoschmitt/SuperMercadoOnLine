@@ -12,10 +12,11 @@
 
 <div class="row">
 
-    @foreach (var produto in Model.Produtos)
-    {                     // (col-sm-*)multiplo ou divisor de 12
-        <div class="col-sm-4">
-            <div>
+    @if (Model.Produtos.Count > 0)
+    {
+        @foreach (var produto in Model.Produtos)
+        {                     // (col-sm-*)multiplo ou divisor de 12
+            <div class="col-sm-4">
                 <div class="card text-center bg-light mb-4">
                     <img class="card-img-top" src="/img/produto/@String.Concat(produto.IdProduto.ToString("D6"),".jpg")" alt="Imagem de @produto.Nome">
                     <div class="card-header">
@@ -31,6 +32,21 @@
                     </div>
                 </div>
             </div>
-        </div>
+        }
+    }
+    else
+    {
+        if (Request.QueryString.HasValue)
+        {
+            <div class="col-12">
+                <h1>Sua busca por <b>@Request.Query["termoBusca"]</b> não obteve resultados.</h1>
+            </div>
+        }
+        else
+        {
+            <div class="col-12">
+                <h1>Não há produtos cadastrados.</h1>
+            </div>
+        }
     }
 </div>
