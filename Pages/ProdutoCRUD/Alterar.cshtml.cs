@@ -1,8 +1,12 @@
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SuperMercadoNetoOnLine.Data;
 using SuperMercadoNetoOnLine.Models;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,32 +14,43 @@ namespace SuperMercadoNetoOnLine.Pages.ProdutoCRUD
 {
     public class AlterarModel : PageModel
     {
+        private readonly ApplicationDBContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
         [BindProperty]
         public Produto Produto { get; set; }
+        public string CaminhoImagem { get; set; }
 
-        private ApplicationDBContext _context;
+        [BindProperty]
+        [Display(Name = "Imagem do Produto")]
 
-        // este obj instancia o db
-        public AlterarModel(ApplicationDBContext context)
+        public IFormFile ImagemProduto { get; set; }
+
+        public AlterarModel(ApplicationDBContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
-        // processa os dados para mandar a pagina para o usuario que acabou de requisitar, se id é nulo..., se não for..., 
+        
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if(id == null)
             {
                 return NotFound();
             }
-            // tenta encontra um produto com este id, se sim, devolve a pag com o obj
+            
             Produto = await _context.Produtos.FirstOrDefaultAsync(m => m.IdProduto == id);
+
             if(Produto == null)
             {
                 return NotFound();
             }
+                                            //cod produto com 6 digitos
+            CaminhoImagem = $"~/img/produto/{Produto.IdProduto:D6}.jpg";
+
             return Page();
         }
-        // 
+         
         public async Task<IActionResult> OnPostAsync()
         {   // se o meu modelo é valido
             if (!ModelState.IsValid)
