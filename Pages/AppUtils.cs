@@ -10,7 +10,7 @@ namespace SuperMercadoNetoOnLine.Pages
 {
     public static class AppUtils
     {
-        public static async Task ProcessaArquivosDeImagem(int idProduto, IFormFile imagemProduto, IWebHostEnvironment whe)
+        public static async Task ProcessarArquivoDeImagem(int idProduto, IFormFile imagemProduto, IWebHostEnvironment whe)
         {
             //copia a imagem para um stream em memória (carrega em um fluxo de bytes em memoria)
             var ms = new MemoryStream();
