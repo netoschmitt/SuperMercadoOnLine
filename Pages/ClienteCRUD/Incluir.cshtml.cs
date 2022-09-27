@@ -10,7 +10,7 @@ namespace SuperMercadoNetoOnLine.Pages.ClienteCRUD
     {
         private ApplicationDBContext _context;
 
-        [BindProperty]     // prop vinculada aos campos do formulario desta pagina
+        [BindProperty]     // prop vinculada aos campos do formulario desta pagina (endereço, logradouro ... vem do CEP)
         public Cliente Cliente { get; set; }
 
         public IncluirModel(ApplicationDBContext context)
@@ -25,9 +25,14 @@ namespace SuperMercadoNetoOnLine.Pages.ClienteCRUD
 
         public async Task<IActionResult> OnPostAsync()
         {
+            // crio um novo objeto cliente
             var cliente = new Cliente();
-            if(await TryUpdateModelAsync<Cliente>(cliente, "cliente",
-                obj => obj.Nome, obj => obj.DataNascimento, obj => obj.Email, obj => obj.CPF))
+            cliente.Endereco = new Endereco(); // faço e endereço do cliente receber um novo endereço
+            //novos clientes sempre iniciam com essa situação
+            cliente.Situacao = Cliente.SituacaoCliente.Cadastrado; // indico que a situação do cliente é cadastrado.
+
+
+            if (await TryUpdateModelAsync(cliente, Cliente.GetType(), nameof(Cliente)))
             {
                 _context.Clientes.Add(cliente);
                 await _context.SaveChangesAsync();
