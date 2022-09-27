@@ -52,7 +52,7 @@ namespace SuperMercadoNetoOnLine.Pages.ProdutoCRUD
         }
          
         public async Task<IActionResult> OnPostAsync()
-        {   // se o meu modelo é valido
+        {   
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -63,6 +63,9 @@ namespace SuperMercadoNetoOnLine.Pages.ProdutoCRUD
             try
             {       // tento salvar as alteraçoes
                 await _context.SaveChangesAsync();
+                //se há uma img de produto submetida
+                if (ImagemProduto != null)
+                    await AppUtils.ProcessarArquivoDeImagem(Produto.IdProduto, ImagemProduto, _webHostEnvironment);
             }
             catch (DbUpdateConcurrencyException)
             {
